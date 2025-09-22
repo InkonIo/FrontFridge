@@ -7,6 +7,12 @@ import Register from './modules/auth/pages/Register';
 import ForgotPassword from './modules/auth/pages/ForgotPassword';
 import ResetPassword from './modules/auth/pages/ResetPassword';
 import Dashboard from './modules/fridge/pages/Dashboard';
+import Products from './modules/fridge/pages/Products';
+import Recipes from './modules/fridge/pages/Recipes';
+import Profile from './modules/fridge/pages/Profile';
+import Goals from './modules/fridge/pages/Goals';
+import Settings from './modules/fridge/pages/Settings';
+
 import './App.css';
 
 function App() {
@@ -20,10 +26,16 @@ function App() {
           <Route path="/forgot-password" element={<ForgotPassword />} />
           <Route path="/reset-password" element={<ResetPassword />} />
           <Route path="/dashboard" element={<Dashboard />} />
-        </Routes>
+          <Route path="/products" element={<Products />} />
+          <Route path="/recipes" element={<Recipes />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/goals" element={<Goals />} />
+          <Route path="/settings" element={<Settings />} />
+          </Routes>
       </Router>
     </DndProvider>
   );
 }
 
 export default App;
+

@@ -1,13 +1,18 @@
-import { Refrigerator, Package, ChefHat, Target, Settings, User } from 'lucide-react';
+import { Refrigerator, Package, ChefHat, Target, Settings, User, Home } from 'lucide-react';
+import { useLocation, useNavigate } from 'react-router-dom';
 
-export default function Sidebar({ activeTab, setActiveTab }) {
+export default function Sidebar() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const menuItems = [
-    { id: 'fridge', icon: Refrigerator, label: 'Холодильник' },
-    { id: 'products', icon: Package, label: 'Продукты' },
-    { id: 'recipes', icon: ChefHat, label: 'Рецепты' },
-    { id: 'goals', icon: Target, label: 'Цели' },
-    { id: 'profile', icon: User, label: 'Профиль' },
-    { id: 'settings', icon: Settings, label: 'Настройки' },
+    { id: 'dashboard', icon: Home, label: 'Главный экран', path: '/dashboard' },
+    { id: 'fridge', icon: Refrigerator, label: 'Холодильник', path: '/dashboard' }, // Fridge is part of dashboard
+    { id: 'products', icon: Package, label: 'Продукты', path: '/products' },
+    { id: 'recipes', icon: ChefHat, label: 'Рецепты', path: '/recipes' },
+    { id: 'goals', icon: Target, label: 'Цели', path: '/goals' },
+    { id: 'profile', icon: User, label: 'Профиль', path: '/profile' },
+    { id: 'settings', icon: Settings, label: 'Настройки', path: '/settings' },
   ];
 
   return (
@@ -18,9 +23,9 @@ export default function Sidebar({ activeTab, setActiveTab }) {
           {menuItems.map((item) => (
             <button
               key={item.id}
-              onClick={() => setActiveTab(item.id)}
+              onClick={() => navigate(item.path)}
               className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200 ${
-                activeTab === item.id
+                location.pathname === item.path
                   ? 'bg-blue-100 text-blue-700 shadow-sm'
                   : 'text-slate-600 hover:bg-slate-100'
               }`}
